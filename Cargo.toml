@@ -1,0 +1,9 @@
+[package]
+edition = "2018"
+name = "on-file-change"
+version = "1.0.0"
+
+[dependencies]
+anyhow = "^1.0"
+notify = "^4.0"
+structopt = "^0.3"
