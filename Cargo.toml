@@ -1,9 +1,19 @@
 [package]
 edition = "2018"
 name = "on-file-change"
-version = "1.0.0"
+version = "1.1.0"
 
 [dependencies]
 anyhow = "^1.0"
 notify = "^4.0"
 structopt = "^0.3"
+path-absolutize = "^3.0"
+
+[[bin]]
+name = "on-file-change"
+path = "src/on_file_change.rs"
+
+[[bin]]
+name = "wait-for-file"
+path = "src/wait_for_file.rs"
+

@@ -7,7 +7,7 @@ use std::path::{PathBuf, Path};
 use anyhow::Context;
 
 #[derive(StructOpt)]
-/// A convenience wrapper around inotify to run a command whenever a file changes.
+#[structopt(name="on-file-change", about="A convenience wrapper around inotify to run a command whenever a file changes.")]
 struct Args {
     /// Filepaths to watch
     #[structopt(min_values=1)]
@@ -60,8 +60,7 @@ fn main() -> anyhow::Result<()> {
 
     for event in rx {
         match event {
-            DebouncedEvent::Write(p) => {
-                dbg!(&cmd);
+            DebouncedEvent::Write(p) | DebouncedEvent::Create(p) => {
                 cmd.run(&p)?;
             }
             _ => {}
